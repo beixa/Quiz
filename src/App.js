@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Questions} from './questions/questions.js'
+import {Questions} from './questions/Questions.js'
 import {Score} from './components/Score.js'
 
 export default function App() {
@@ -33,7 +33,7 @@ export default function App() {
           </div>
           <div className="answer-section">
             {Questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button onClick = { () => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+              <button key={answerOption.id} onClick = { () => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
             ))}
           </div>
         </>
