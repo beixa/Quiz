@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Questions} from './questions/questions.js'
+import {Score} from './components/Score.js'
 
 export default function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -21,9 +22,7 @@ export default function App() {
 	return (
     <div className="app">
       {showScore ? (
-        <div className="score-section">
-          You scored {score} out of {Questions.length}
-        </div>
+        <Score score={score} length = {Questions.length}/>
       ) : (
         <>
           <div className="question-section">
@@ -33,7 +32,7 @@ export default function App() {
             <div className="question-text">{Questions[currentQuestion].questionText}</div>
           </div>
           <div className="answer-section">
-            {Questions[currentQuestion].answerOptions.map((answerOption, index) => (
+            {Questions[currentQuestion].answerOptions.map((answerOption) => (
               <button onClick = { () => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
             ))}
           </div>
